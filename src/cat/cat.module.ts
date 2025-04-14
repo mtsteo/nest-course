@@ -13,6 +13,6 @@ import { databaseProviders } from './database-providers';
     TypeOrmModule.forFeature([CatEntity]),
   ],
   controllers: [CatController],
-  providers: [CatService, { ...databaseProviders.pgProvider }],
+  providers: [CatService, { ...databaseProviders.mongoProvider }],
 })
 export class CatModule {}

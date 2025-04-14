@@ -9,18 +9,27 @@ import { DogEntity } from './dog/entity/dog.entity';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://mateusteotonho:WrsF7NvCj7S1iXgw@cluster0.uorgs.mongodb.net/Nest?retryWrites=true&w=majority&appName=cluster0/cats',
-    ),
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5433,
-      database: 'postgres',
-      username: 'postgres',
-      password: 'postgres',
-      entities: [CatEntity, DogEntity],
-      synchronize: true,
+    ConfigModule.forRoot({ isGlobal: true }),
+
+    MongooseModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => ({
+        uri: config.get<string>('MONGO_URI'),
+      }),
+    }),
+
+    TypeOrmModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => ({
+        type: 'postgres',
+        host: config.get<string>('POSTGRES_HOST'),
+        port: config.get<number>('POSTGRES_PORT'),
+        username: config.get<string>('POSTGRES_USER'),
+        password: config.get<string>('POSTGRES_PASSWORD'),
+        database: config.get<string>('POSTGRES_DB'),
+        entities: [CatEntity, DogEntity],
+        synchronize: true,
+      }),
     }),
     CatModule,
     DogModule,
