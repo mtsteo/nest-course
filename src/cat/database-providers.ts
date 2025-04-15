@@ -1,5 +1,5 @@
-import { MongoCatRepository } from '../database/mongoose/repository/cat.repository';
-import { CAT_REPOSITORY } from '../database/tokens';
+import { MongoCatRepository } from '../_database/mongoose/repository/cat.repository';
+import { CAT_REPOSITORY } from '../_database/tokens';
 
 export const databaseProviders = {
   mongoProvider: {

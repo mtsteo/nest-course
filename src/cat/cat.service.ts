@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { ICatsRepository } from './interfaces/cat-repository.interface';
-import { CAT_REPOSITORY } from '../database/tokens';
+import { CAT_REPOSITORY } from '../_database/tokens';
 
 @Injectable()
 export class CatService {

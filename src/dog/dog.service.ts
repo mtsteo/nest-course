@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { CreateDogDto } from './dto/create-dog.dto';
-import { DOG_REPOSITORY } from '../database/tokens';
+import { DOG_REPOSITORY } from '../_database/tokens';
 import { IDogsRepository } from './interfaces/dog-repository.interface';
 
 @Injectable()

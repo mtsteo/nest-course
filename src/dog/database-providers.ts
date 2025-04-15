@@ -1,5 +1,5 @@
-import { MongoDogRepository } from '../database/mongoose/repository/dog.repository';
-import { DOG_REPOSITORY } from '../database/tokens';
+import { MongoDogRepository } from '../_database/mongoose/repository/dog.repository';
+import { DOG_REPOSITORY } from '../_database/tokens';
 
 export const databaseProviders = {
   mongoProvider: {
