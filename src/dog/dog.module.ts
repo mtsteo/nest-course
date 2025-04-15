@@ -1,18 +1,14 @@
 import { Module } from '@nestjs/common';
 import { DogService } from './dog.service';
 import { DogController } from './dog.controller';
-import { MongooseModule } from '@nestjs/mongoose';
-import { DogSchema } from './schemas/dog.schema';
-import { databaseProviders } from './database-providers';
+import { SqliteModule } from '../_database/sqlite/sqlite.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { DogEntity } from './entity/dog.entity';
+import { SqliteService } from '../_database/sqlite/sqlite.service';
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: 'Dog', schema: DogSchema }])],
+  imports: [TypeOrmModule.forFeature([DogEntity]), SqliteModule],
   controllers: [DogController],
-  providers: [
-    DogService,
-    {
-      ...databaseProviders.mongoProvider,
-    },
-  ],
+  providers: [DogService, SqliteService],
 })
 export class DogModule {}
