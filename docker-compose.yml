@@ -1,15 +1,16 @@
 version: '3.7'
+
 services:
-  postgres:
-    image: postgres:16.2-alpine3.19
-    container_name: postgres
+  mongodb:
+    image: mongo:6.0-jammy
+    container_name: mongodb
     ports:
-      - '5433:5432'
+      - "27017:27017"
     environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      MONGO_INITDB_ROOT_USERNAME: mongodb
+      MONGO_INITDB_ROOT_PASSWORD: mongodb
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - mongo_data:/data/db
+
 volumes:
-  postgres_data:
+  mongo_data:

@@ -4,6 +4,7 @@ import { Cat } from '../../../cat/schemas/cat.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateCatDto } from '../../../cat/dto/create-cat.dto';
+import { mockData } from '../../../cat/mockData';
 
 @Injectable()
 export class MongoCatRepository implements ICatsRepository {
