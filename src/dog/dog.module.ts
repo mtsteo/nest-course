@@ -4,11 +4,11 @@ import { DogController } from './dog.controller';
 import { SqliteModule } from '../_database/sqlite/sqlite.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DogEntity } from './entity/dog.entity';
-import { SqliteService } from '../_database/sqlite/sqlite.service';
+import { databaseProviders } from './database-providers';
 
 @Module({
   imports: [TypeOrmModule.forFeature([DogEntity]), SqliteModule],
   controllers: [DogController],
-  providers: [DogService, SqliteService],
+  providers: [DogService, { ...databaseProviders.sqlite }],
 })
 export class DogModule {}

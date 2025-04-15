@@ -1,14 +1,17 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { CreateDogDto } from './dto/create-dog.dto';
-import { SqliteService } from '../_database/sqlite/sqlite.service';
+import { DOG_REPOSITORY } from '../_database/tokens';
+import { IDogsRepository } from './interfaces/dog-repository.interface';
 
 @Injectable()
 export class DogService {
-  constructor(private readonly sqlitedb: SqliteService) {}
+  constructor(
+    @Inject(DOG_REPOSITORY) private readonly dogRepository: IDogsRepository,
+  ) {}
   create(createDogDto: CreateDogDto) {
-    return this.sqlitedb.create(createDogDto);
+    return this.dogRepository.create(createDogDto);
   }
   findAll() {
-    return this.sqlitedb.findAll();
+    return this.dogRepository.findAll();
   }
 }

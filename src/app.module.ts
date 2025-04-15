@@ -6,6 +6,7 @@ import { DogModule } from './dog/dog.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DogEntity } from './dog/entity/dog.entity';
 import { SqliteModule } from './_database/sqlite/sqlite.module';
+import { CatEntity } from './cat/entity/cat.entity';
 
 @Module({
   imports: [

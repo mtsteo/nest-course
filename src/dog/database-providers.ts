@@ -1,9 +1,9 @@
-import { SqliteService } from '../_database/sqlite/sqlite.service';
 import { DOG_REPOSITORY } from '../_database/tokens';
+import { SqliteDogRepository } from './repository/dog-sqlite.repository';
 
 export const databaseProviders = {
   sqlite: {
     provide: DOG_REPOSITORY,
-    useClass: SqliteService,
+    useClass: SqliteDogRepository,
   },
 };

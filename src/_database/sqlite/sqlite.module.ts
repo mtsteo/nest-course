@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DogEntity } from '../../dog/entity/dog.entity';
+import { CatEntity } from '../../cat/entity/cat.entity';
 
 @Module({
   imports: [
@@ -8,7 +9,7 @@ import { DogEntity } from '../../dog/entity/dog.entity';
       type: 'sqlite',
       database: 'db.sqlite',
       synchronize: true,
-      entities: [DogEntity],
+      entities: [DogEntity, CatEntity],
     }),
   ],
   exports: [TypeOrmModule],
